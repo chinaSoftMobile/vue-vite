@@ -15,7 +15,7 @@
 const onRouteChange = () => {
   if (window.eventCenterForAppNameVite) {
     // 发送全局数据，通知侧边栏修改菜单展示
-    window.eventCenterForAppNameVite.setGlobalData({ name: 'child2-vite' })
+    window.eventCenterForAppNameVite.setGlobalData({ name: 'child-vite' })
   }
 }
 </script>

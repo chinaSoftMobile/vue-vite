@@ -3,14 +3,33 @@
     我是儿子2
   </div>
 
+  <div @click="jump">跳转</div>
+
+  <div>
+
+  </div>
+
 </template>
 
 <script setup>
-import {ref, reactive} from 'vue'
+import {ref, reactive,onMounted} from 'vue'
+import {useRouter} from 'vue-router'
+
+let router = useRouter();
+//const data = window.microApp.getData() // 返回基座下发的data数据
+
+onMounted(()=>{
+  console.log('复数句',window)
+})
+
+const jump = () => {
+  router.push('/color');
+}
+
 </script>
 
 <style scoped>
-.child2{
+.child2 {
   color: red;
 }
 </style>

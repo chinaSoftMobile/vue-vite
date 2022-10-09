@@ -1,22 +1,21 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import './style.css'
 import App from './App.vue'
 import router from "./router";
 import microApp from '@micro-zoe/micro-app'
 
 
-
 microApp.start({
     disableScopecss: false, // 默认值false
     plugins: {
         modules: {
-            'appname-vite': [
+            'childName2': [
                 {
                     loader(code) {
                         if (process.env.NODE_ENV === 'development') {
                             // 这里 /basename/ 需要和子应用vite.config.js中base的配置保持一致
-                            code = code.replace(/(from|import)(\s*['"])(\/child\/vite\/)/g, all => {
-                                return all.replace('/child/vite/', 'http://localhost:8081/')
+                            code = code.replace(/(from|import)(\s*['"])(\/child2\/vite\/)/g, all => {
+                                return all.replace('/child2/vite/', 'http://localhost:7100/')
                             })
                         }
 
@@ -24,13 +23,13 @@ microApp.start({
                     }
                 }
             ],
-            'appname-vite1': [
+            'childName3': [
                 {
                     loader(code) {
                         if (process.env.NODE_ENV === 'development') {
                             // 这里 /basename/ 需要和子应用vite.config.js中base的配置保持一致
-                            code = code.replace(/(from|import)(\s*['"])(\/child\/vite\/)/g, all => {
-                                return all.replace('/child/vite/', 'http://localhost:4007/')
+                            code = code.replace(/(from|import)(\s*['"])(\/child3\/vite\/)/g, all => {
+                                return all.replace('/child3/vite/', 'http://localhost:7200/')
                             })
                         }
 

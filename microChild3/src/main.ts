@@ -47,7 +47,6 @@ function fixBugForVueRouter4 (router: Router) {
 function handleMicroData (router: Router) {
     // eventCenterForAppNameVite 是基座添加到window的数据通信对象
     if (window.eventCenterForAppNameVite) {
-        debugger
         // 主动获取基座下发的数据
         console.log('child-vite getData:', window.eventCenterForAppNameVite.getData())
 
@@ -66,11 +65,10 @@ function handleMicroData (router: Router) {
 
         // 向基座发送数据
         setTimeout(() => {
-            window.eventCenterForAppNameVite.dispatch({ myname: 'child2-vite' })
+            window.eventCenterForAppNameVite.dispatch({ myname: 'vite-app3' })
         }, 3000)
     }
 }
-
 
 let app: AppInstance | null = null
 let router: Router | null = null
@@ -78,15 +76,14 @@ let history: RouterHistory | null = null
 // 将渲染操作放入 mount 函数
 function mount () {
     history = createWebHashHistory()
-
     router = createRouter({
         history,
         routes,
     })
     app = createApp(App)
     app.use(router)
-    app.mount('#vite-app2')
-    console.log('微应用child2-vite渲染了')
+    app.mount('#vite-app3')
+    console.log('微应用child3渲染了')
     handleMicroData(router)
     fixBugForVueRouter4(router)
 }
@@ -100,18 +97,21 @@ function unmount () {
     app = null
     router = null
     history = null
-    console.log('微应用child2-vite卸载了')
+    console.log('微应用child3卸载了')
 }
 
 
 // 微前端环境下，注册mount和unmount方法
 if (window.__MICRO_APP_BASE_APPLICATION__) {
     // @ts-ignore
-    window['micro-app-childName2'] = { mount, unmount }
+    window['micro-app-childName3'] = { mount, unmount }
+
+
 } else {
     // 非微前端环境直接渲染
     mount()
 }
+
 
 
 

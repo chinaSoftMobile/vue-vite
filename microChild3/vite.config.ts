@@ -5,7 +5,7 @@ import {writeFileSync} from "fs";
 
 export default ({command}: ConfigEnv): UserConfigExport => {
   return {
-    base: `${process.env.NODE_ENV === 'production' ? 'http://www.micro-zoe.com' : ''}/child2/vite/`,
+    base: `${process.env.NODE_ENV === 'production' ? 'http://www.micro-zoe.com' : ''}/child3/vite/`,
     plugins: [
       vue(),
       (function () {
@@ -67,7 +67,7 @@ export default ({command}: ConfigEnv): UserConfigExport => {
 
     server: {
       host: '0.0.0.0',
-      port: 7100,
+      port: 7200,
       proxy: {
       },
     },

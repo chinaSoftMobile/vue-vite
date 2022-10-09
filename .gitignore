@@ -1,12 +1,9 @@
-micrApp/node_modules
-micrApp/dist
-micrApp/dist-ssr
-
-micrApp2/node_modules
-micrApp2/dist
-micrApp2/dist-ssr
+*/node_modules
+*/dist
+*/dist-ssr
 *.local
 .vscode
 package-lock.json
 yarn.lock
 yarn-error.log
+.idea

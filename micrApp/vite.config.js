@@ -99,7 +99,7 @@ export default defineConfig({
             '/spms-wisdom-service-device': {
                 target: 'https://kf1-2.cighospital.com:8080', // 测试环境
                 // target: 'http://10.88.40.188:8080', // 永奎
-                //target: 'http://10.28.22.238:8081', // 刘科洪
+                //target: 'http://10.28.22.238:7100', // 刘科洪
                 //target: 'http://10.88.40.204:9001', // 泛海洋
                 changeOrigin: true,
                 //rewrite: (path) => path.replace(/^\/spms-wisdom-service-device/, ''),
