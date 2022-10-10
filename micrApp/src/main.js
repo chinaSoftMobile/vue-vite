@@ -5,6 +5,7 @@ import router from "./router";
 import microApp from '@micro-zoe/micro-app'
 
 
+
 microApp.start({
     disableScopecss: false, // 默认值false
     plugins: {
@@ -59,5 +60,9 @@ microApp.start({
     }
 })
 
+const app = createApp(App)
 
-createApp(App).use(router).mount('#app')
+//挂载全局
+app.config.globalProperties.microApp = microApp
+
+app.use(router).mount('#app')

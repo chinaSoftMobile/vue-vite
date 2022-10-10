@@ -11,15 +11,16 @@
 
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import {ref, reactive,onMounted} from 'vue'
 import {useRouter} from 'vue-router'
 
 let router = useRouter();
-//const data = window.microApp.getData() // 返回基座下发的data数据
+console.log('kkkk',window.eventCenterForAppNameVite)
+// const data = window.microApp.getData() // 返回基座下发的data数据
 
 onMounted(()=>{
-  console.log('复数句',window)
+  console.log('复数句',window['aa'])
 })
 
 const jump = () => {

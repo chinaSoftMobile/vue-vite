@@ -19,7 +19,8 @@ declare global {
  */
 function fixBugForVueRouter4 (router: Router) {
     // 判断主应用是main-vue3或main-vite，因为这这两个主应用是 vue-router4
-    //if (window.location.href.includes('/main-vue3') || window.location.href.includes('/main-vite')) {
+
+    if (window.location.href.includes('/main-vue3') || window.location.href.includes('/main-vite')) {
         /**
          * 重要说明：
          * 1、这里主应用下发的基础路由为：`/main-xxx/app-vite`，其中 `/main-xxx` 是主应用的基础路由，需要去掉，我们只取`/app-vite`，不同项目根据实际情况调整
@@ -39,7 +40,7 @@ function fixBugForVueRouter4 (router: Router) {
                 window.history.state.current = realBaseRoute +  (window.history.state.current || '')
             }
         })
-    //}
+    }
 }
 
 
