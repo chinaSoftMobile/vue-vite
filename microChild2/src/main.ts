@@ -3,12 +3,6 @@ import { createRouter, createWebHashHistory, RouterHistory, Router } from 'vue-r
 import App from './App.vue'
 import routes from './router'
 
-import { EventCenterForMicroApp } from '@micro-zoe/micro-app'
-
-// 注意：每个vite子应用根据appName单独分配一个通信对象
-window['eventCenterForChildName2'] = new EventCenterForMicroApp('childName2')
-
-
 declare global {
     interface Window {
         eventCenterForChildName2: any
@@ -55,24 +49,24 @@ function handleMicroData (router: Router) {
     // eventCenterForChildName2 是基座添加到window的数据通信对象
     if (window.eventCenterForChildName2) {
         // 主动获取基座下发的数据
-        console.log('ChildName2 getData:', window.eventCenterForChildName2.getData())
+        console.log('父亲初始化值', window.eventCenterForChildName2.getData())
 
         // 监听基座下发的数据变化
         window.eventCenterForChildName2.addDataListener((data: Record<string, unknown>) => {
             console.log('child-vite addDataListener:', data)
 
-            if (data.path && typeof data.path === 'string') {
-                data.path = data.path.replace(/^#/, '')
-                // 当基座下发path时进行跳转
-                if (data.path && data.path !== router.currentRoute.value.path) {
-                    router.push(data.path as string)
-                }
-            }
+            // if (data.path && typeof data.path === 'string') {
+            //     data.path = data.path.replace(/^#/, '')
+            //     // 当基座下发path时进行跳转
+            //     if (data.path && data.path !== router.currentRoute.value.path) {
+            //         router.push(data.path as string)
+            //     }
+            // }
         })
 
         // 向基座发送数据
         setTimeout(() => {
-            window.eventCenterForChildName2.dispatch({ myname: 'child2-vite' })
+            window.eventCenterForChildName2.dispatch({ myname: 'childName2' })
         }, 3000)
     }
 }

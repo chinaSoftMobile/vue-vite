@@ -14,6 +14,7 @@
           name='childName2'
           url='http://localhost:7100/child2/vite/'
           @mounted='handleMount'
+          @datachange='handleDataChange'
       ></micro-app>
     </div>
 
@@ -24,10 +25,17 @@
 </template>
 
 <script setup>
+
 import {ref, reactive, onMounted, getCurrentInstance} from 'vue'
 import {useRouter} from 'vue-router'
+
+import { EventCenterForMicroApp } from '@micro-zoe/micro-app'
+// 注意：每个vite子应用根据appName单独分配一个通信对象
+window['eventCenterForChildName2'] = new EventCenterForMicroApp('childName2')
+
 let {proxy} = getCurrentInstance();
 let router = useRouter();
+
 
 let microAppData = reactive({name: "张三"})
 
@@ -35,6 +43,10 @@ onMounted(() => {
   //console.log('abc',proxy.microApp);
   proxy.microApp.setData('childName2', {a: 1});
 })
+
+let handleDataChange = (e)=>{
+  console.log('来自子应用的数据：', e.detail.data)
+}
 
 
 let handleMount = () => {
