@@ -4,8 +4,6 @@ import App from './App.vue'
 import router from "./router";
 import microApp from '@micro-zoe/micro-app'
 
-
-
 microApp.start({
     disableScopecss: false, // 默认值false
     plugins: {

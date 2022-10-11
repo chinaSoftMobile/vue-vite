@@ -12,7 +12,7 @@
     "prettier:fix": "prettier --write src/**/*.{js,ts,jsx,vue,tsx,scss,json}"
   },
   "dependencies": {
-    "@micro-zoe/micro-app": "^0.8.10",
+    "@micro-zoe/micro-app": "latest",
     "axios": "^0.24.0",
     "qs": "^6.10.3",
     "vant": "^3.4.1",

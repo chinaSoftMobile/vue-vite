@@ -3,9 +3,15 @@ import { createRouter, createWebHashHistory, RouterHistory, Router } from 'vue-r
 import App from './App.vue'
 import routes from './router'
 
+import { EventCenterForMicroApp } from '@micro-zoe/micro-app'
+
+// 注意：每个vite子应用根据appName单独分配一个通信对象
+window['eventCenterForChildName2'] = new EventCenterForMicroApp('childName2')
+
+
 declare global {
     interface Window {
-        eventCenterForAppNameVite: any
+        eventCenterForChildName2: any
         __MICRO_APP_NAME__: string
         __MICRO_APP_ENVIRONMENT__: string
         __MICRO_APP_BASE_APPLICATION__: string
@@ -46,14 +52,13 @@ function fixBugForVueRouter4 (router: Router) {
 
 // 与基座进行数据交互
 function handleMicroData (router: Router) {
-    // eventCenterForAppNameVite 是基座添加到window的数据通信对象
-    if (window.eventCenterForAppNameVite) {
-        debugger
+    // eventCenterForChildName2 是基座添加到window的数据通信对象
+    if (window.eventCenterForChildName2) {
         // 主动获取基座下发的数据
-        console.log('child-vite getData:', window.eventCenterForAppNameVite.getData())
+        console.log('ChildName2 getData:', window.eventCenterForChildName2.getData())
 
         // 监听基座下发的数据变化
-        window.eventCenterForAppNameVite.addDataListener((data: Record<string, unknown>) => {
+        window.eventCenterForChildName2.addDataListener((data: Record<string, unknown>) => {
             console.log('child-vite addDataListener:', data)
 
             if (data.path && typeof data.path === 'string') {
@@ -67,7 +72,7 @@ function handleMicroData (router: Router) {
 
         // 向基座发送数据
         setTimeout(() => {
-            window.eventCenterForAppNameVite.dispatch({ myname: 'child2-vite' })
+            window.eventCenterForChildName2.dispatch({ myname: 'child2-vite' })
         }, 3000)
     }
 }
@@ -97,7 +102,7 @@ function unmount () {
     app?.unmount()
     history?.destroy()
     // 卸载所有数据监听函数
-    window.eventCenterForAppNameVite?.clearDataListener()
+    window.eventCenterForChildName2?.clearDataListener()
     app = null
     router = null
     history = null

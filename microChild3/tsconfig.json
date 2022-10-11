@@ -18,6 +18,6 @@
             "@/*": ["src/*"]
         }
     },
-    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/libs/rem.js"],
+    "include": ["src/**/*.ts", "src/**/*.vue","src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/libs/rem.js"],
     "typeRoots": ["./types", "./node_modules/vue/types"]
 }
