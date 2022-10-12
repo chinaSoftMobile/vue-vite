@@ -36,6 +36,20 @@ microApp.start({
                     }
                 }
             ],
+            'vue2': [
+                {
+                    loader(code) {
+                        if (process.env.NODE_ENV === 'development') {
+                            // 这里 /basename/ 需要和子应用vite.config.js中base的配置保持一致
+                            code = code.replace(/(from|import)(\s*['"])(\/child4\/webpack\/)/g, all => {
+                                return all.replace('/child4/webpack/', 'http://localhost:7400/')
+                            })
+                        }
+
+                        return code
+                    }
+                }
+            ],
             // 解决create-react-app中sockjs-node报错的问题
             'appname-react16': [{
                 loader(code) {

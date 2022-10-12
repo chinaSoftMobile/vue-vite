@@ -23,7 +23,7 @@ onMounted(()=>{
 })
 
 const jump = () => {
-  router.push('/color');
+  router.push({path:'/color'});
 }
 
 </script>

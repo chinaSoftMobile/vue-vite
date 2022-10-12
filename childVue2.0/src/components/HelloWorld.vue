@@ -1,0 +1,57 @@
+<template>
+  <div class="hello">
+    我是vue 2.0 webpack
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'HelloWorld',
+  data() {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  mounted() {
+    console.log('kkkk', window.microApp.getData())
+
+    // 监听基座下发的数据变化
+    window.microApp.addDataListener((data) => {
+      console.log('child-vue2 addDataListener:', data)
+    })
+
+    // 向基座发送数据
+    setTimeout(() => {
+      window.microApp.dispatch({ myname: 'vue2' })
+    }, 3000)
+
+
+  },
+  methods: {
+    dataListener(data) {
+      console.log('来自基座应用的数据', data)
+    },
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+a {
+  color: #42b983;
+}
+</style>

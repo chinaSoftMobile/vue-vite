@@ -7,15 +7,27 @@
     <!-- 访问路由组件页面：login和register -->
     <!--    <router-link to="/micro1/child1">登录</router-link>-->
     <!-- 展示匹配到的组件：login和register -->
+<!--    <div class="center">-->
+<!--      <micro-app-->
+<!--          disablesandbox-->
+<!--          :data='microAppData'-->
+<!--          name='childName2'-->
+<!--          url='http://localhost:7100/child2/vite/'-->
+<!--          @mounted='handleMount'-->
+<!--          @datachange='handleDataChange'-->
+<!--      ></micro-app>-->
+<!--    </div>-->
+
     <div class="center">
       <micro-app
           disablesandbox
           :data='microAppData'
-          name='childName2'
-          url='http://localhost:7100/child2/vite/'
+          name='vue2'
+          url='http://localhost:7400/child4/webpack/'
           @mounted='handleMount'
           @datachange='handleDataChange'
       ></micro-app>
+
     </div>
 
     <!--    <div class="bottom">-->
@@ -42,6 +54,8 @@ let microAppData = reactive({name: "张三"})
 onMounted(() => {
   //console.log('abc',proxy.microApp);
   proxy.microApp.setData('childName2', {a: 1});
+
+
 })
 
 let handleDataChange = (e)=>{
