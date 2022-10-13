@@ -2,7 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 
 const routeList = [
     {
-        path: '/main',
+        path: '/',
         name: '',
         component: () => import('@/views/Main.vue'),// 当你点击按钮跳转时对应的组件，
         children: [
@@ -14,18 +14,17 @@ const routeList = [
             },
         ]
     },
-
     {
         // 👇 非严格匹配，/my-page/* 都指向 MyPage 页面
-        path: '/child2:page*',
-        name: 'vite',
-        component: () => import('@/views/child2.vue') // 当你点击按钮跳转时对应的组件
+        path: '/app-vite3:page*',
+        name: 'vite3',
+        component: () => import('@/views/child3.vue') // 当你点击按钮跳转时对应的组件
     },
     {
         // 👇 非严格匹配，/my-page/* 都指向 MyPage 页面
-        path: '/child3:page*',
-        name: 'vite',
-        component: () => import('@/views/child3.vue') // 当你点击按钮跳转时对应的组件
+        path: '/app-vite2:page*',
+        name: 'vite2',
+        component: () => import('@/views/child2.vue') // 当你点击按钮跳转时对应的组件
     },
     {
         path: '/:pathMatch(.*)*',

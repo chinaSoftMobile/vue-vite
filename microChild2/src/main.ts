@@ -53,7 +53,7 @@ function handleMicroData (router: Router) {
 
         // 监听基座下发的数据变化
         window.eventCenterForChildName2.addDataListener((data: Record<string, unknown>) => {
-            console.log('child-vite addDataListener:', data)
+            console.log('父数据变化', data)
 
             // if (data.path && typeof data.path === 'string') {
             //     data.path = data.path.replace(/^#/, '')

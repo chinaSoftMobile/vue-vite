@@ -12,13 +12,14 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
-  mounted() {
-    console.log('kkkk', window.microApp.getData())
-
+  created() {
     // 监听基座下发的数据变化
     window.microApp.addDataListener((data) => {
-      console.log('child-vue2 addDataListener:', data)
+      console.log('父数据变动', data)
     })
+  },
+  mounted() {
+    console.log('kkkk', window.microApp.getData())
 
     // 向基座发送数据
     setTimeout(() => {
