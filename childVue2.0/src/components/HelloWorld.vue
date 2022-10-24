@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'HelloWorld',
   data() {
@@ -19,19 +21,29 @@ export default {
     })
   },
   mounted() {
-    console.log('kkkk', window.microApp.getData())
-
+    //console.log('kkkk', window.microApp.getData())
+    this.getVersion();
     // 向基座发送数据
     setTimeout(() => {
-      window.microApp.dispatch({ myname: 'vue2' })
+      window.microApp.dispatch({myname: 'vue2'})
     }, 3000)
 
 
   },
   methods: {
     dataListener(data) {
-      console.log('来自基座应用的数据', data)
+      // console.log('来自基座应用的数据', data)
     },
+    getVersion() {
+      let url = `//${window.location.host}/static/version.json?t=${new Date().getTime()}`
+      axios.get(url).then((res) => {
+        if (res.status === 200) {
+          let serverVersion = res.data.version
+          let localVueVersion = localStorage.getItem('version');
+          console.log("服务器版本", serverVersion);
+        }
+      })
+    }
   }
 }
 </script>
