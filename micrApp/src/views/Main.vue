@@ -11,11 +11,24 @@
       <micro-app
           disablesandbox
           :data='microAppData'
+          bas
           name='childName2'
-          url='http://localhost:7100/childName2'
+          url='http://localhost:7100/'
           @mounted='handleMount'
-          @datachange='handleDataChange'
-      ></micro-app>
+          @datachange='handleDataChange'>
+      </micro-app>
+    </div>
+
+    <div class="center">
+      <micro-app
+          disablesandbox
+          :data='microAppData'
+          bas
+          name='childName2'
+          url='http://localhost:7100/'
+          @mounted='handleMount'
+          @datachange='handleDataChange'>
+      </micro-app>
     </div>
 
     <!--    <div class="center">-->
@@ -42,6 +55,10 @@ import {useRouter} from 'vue-router'
 import axios from 'axios'
 import appConfig from '../../app.config'
 
+let router = useRouter();
+
+// router.push({path:'./childName2/#/color'})
+
 import {EventCenterForMicroApp} from '@micro-zoe/micro-app'
 // 注意：每个vite子应用根据appName单独分配一个通信对象
 window['eventCenterForChildName2'] = new EventCenterForMicroApp('childName2')
@@ -62,7 +79,6 @@ const getVersion = () => {
 }
 
 let {proxy} = getCurrentInstance();
-let router = useRouter();
 
 
 let microAppData = reactive({

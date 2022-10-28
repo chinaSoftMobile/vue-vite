@@ -19,4 +19,11 @@
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
+
+#app,html,body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
 </style>
