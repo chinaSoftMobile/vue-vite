@@ -19,6 +19,17 @@ export default {
             build: {
                 url: '/childName2/'
             }
+        },
+        'childName3': {
+            dev: {
+                url: 'http://localhost:7200/'
+            },
+            preview: {
+                url: `http://localhost:${8821}/childName3/`
+            },
+            build: {
+                url: '/childName3/'
+            }
         }
     }
 };

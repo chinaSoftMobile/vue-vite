@@ -5,7 +5,7 @@ import routes from './router'
 
 declare global {
     interface Window {
-        eventCenterForAppNameVite: any
+        eventCenterForChildName3: any
         __MICRO_APP_NAME__: string
         __MICRO_APP_ENVIRONMENT__: string
         __MICRO_APP_BASE_APPLICATION__: string
@@ -19,7 +19,7 @@ declare global {
  */
 function fixBugForVueRouter4 (router: Router) {
     // 判断主应用是main-vue3或main-vite，因为这这两个主应用是 vue-router4
-    //if (window.location.href.includes('/main-vue3') || window.location.href.includes('/main-vite')) {
+    if (window.location.href.includes('/main-vue3') || window.location.href.includes('/main-vite')) {
         /**
          * 重要说明：
          * 1、这里主应用下发的基础路由为：`/main-xxx/app-vite`，其中 `/main-xxx` 是主应用的基础路由，需要去掉，我们只取`/app-vite`，不同项目根据实际情况调整
@@ -39,19 +39,19 @@ function fixBugForVueRouter4 (router: Router) {
                 window.history.state.current = realBaseRoute +  (window.history.state.current || '')
             }
         })
-    //}
+    }
 }
 
 
 // 与基座进行数据交互
 function handleMicroData (router: Router) {
-    // eventCenterForAppNameVite 是基座添加到window的数据通信对象
-    if (window.eventCenterForAppNameVite) {
+    // eventCenterForForChildName3 是基座添加到window的数据通信对象
+    if (window.eventCenterForChildName3) {
         // 主动获取基座下发的数据
-        console.log('child-vite getData:', window.eventCenterForAppNameVite.getData())
+        console.log('child-vite getData:', window.eventCenterForChildName3.getData())
 
         // 监听基座下发的数据变化
-        window.eventCenterForAppNameVite.addDataListener((data: Record<string, unknown>) => {
+        window.eventCenterForChildName3.addDataListener((data: Record<string, unknown>) => {
             console.log('child-vite addDataListener:', data)
 
             if (data.path && typeof data.path === 'string') {
@@ -65,7 +65,7 @@ function handleMicroData (router: Router) {
 
         // 向基座发送数据
         setTimeout(() => {
-            window.eventCenterForAppNameVite.dispatch({ myname: 'vite-app3' })
+            window.eventCenterForChildName3.dispatch({ myname: 'vite-app3' })
         }, 3000)
     }
 }
@@ -93,7 +93,7 @@ function unmount () {
     app?.unmount()
     history?.destroy()
     // 卸载所有数据监听函数
-    window.eventCenterForAppNameVite?.clearDataListener()
+    window.eventCenterForChildName3?.clearDataListener()
     app = null
     router = null
     history = null

@@ -7,11 +7,11 @@
     <!-- 访问路由组件页面：login和register -->
     <!--    <router-link to="/micro1/child1">登录</router-link>-->
     <!-- 展示匹配到的组件：login和register -->
+    
     <div class="center">
       <micro-app
           disablesandbox
           :data='microAppData'
-          bas
           name='childName2'
           url='http://localhost:7100/'
           @mounted='handleMount'
@@ -19,17 +19,22 @@
       </micro-app>
     </div>
 
-    <div class="center">
-      <micro-app
-          disablesandbox
-          :data='microAppData'
-          bas
-          name='childName2'
-          url='http://localhost:7100/'
-          @mounted='handleMount'
-          @datachange='handleDataChange'>
-      </micro-app>
+
+    <div class="bottom">
+      <micro-app    name='childName3'  url='http://localhost:7200' ></micro-app>
     </div>
+
+<!--    <div class="center">-->
+<!--      <micro-app-->
+<!--          disablesandbox-->
+<!--          :data='microAppData'-->
+<!--          bas-->
+<!--          name='childName2'-->
+<!--          url='http://localhost:7100/'-->
+<!--          @mounted='handleMount'-->
+<!--          @datachange='handleDataChange'>-->
+<!--      </micro-app>-->
+<!--    </div>-->
 
     <!--    <div class="center">-->
     <!--      <micro-app-->
@@ -42,9 +47,7 @@
 
     <!--    </div>-->
 
-    <!--    <div class="bottom">-->
-    <!--      <micro-app  inline disablesandbox name='childName3'  url='http://localhost:7200/child3/vite/' ></micro-app>-->
-    <!--    </div>-->
+
   </div>
 </template>
 
