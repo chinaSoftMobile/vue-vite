@@ -5,8 +5,10 @@ import router from "./router";
 import microApp from '@micro-zoe/micro-app'
 import {getDevUrl} from "./microApp/urlCtrl";
 
-
+console.log('1111111111111111111',process.env.NODE_ENV === 'development')
 microApp.start({
+    'disable-memory-router': true, // 关闭虚拟路由系统
+    'disable-patch-request': true, // 关闭对子应用请求的拦截
     disableScopecss: false, // 默认值false
     plugins: {
         modules: getDevUrl()

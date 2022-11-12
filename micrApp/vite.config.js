@@ -1,10 +1,35 @@
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import {resolve} from "path";
+import federation from '@originjs/vite-plugin-federation'
+
+
+//console.log('00000000000000000',process.env.NODE_ENV === 'development')
+
+const remote = {};
+remote['childName2'] = {
+    external:'http://localhost:7101/assets/remoteEntry.js' ,//本地:http://localhost:7100/assets/remoteEntry.js,生产 'https://kf2-2.sharkyun.com:8080' + '/childName2' +  + '/assets/remoteEntry.js'
+    format: 'esm',
+    from: 'vite'
+};
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [vue()],
+    plugins: [
+        vue(),
+        federation({
+            name:'base',// 基座名称
+            filename:'remoteEntry.js',// 远程模块入口文件，与本地模块中`remotes`配置相对应,导出入口文件
+            remotes: {
+                ...remote
+            },
+            exposes: {
+                // 导出模块
+            }
+            // shared: ['vue', 'vuex', 'vue-router', 'axios', 'vue-i18n', 'park-ui'] // 对外提供的组件所依赖的第三方依赖，这个例子使用了`vue`,`vuex`，此处还可以配置依赖版本，参考`Readme.md`
+        })
+    ],
     base: './',
     resolve: {
         alias: {

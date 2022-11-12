@@ -1,28 +1,44 @@
 <template>
   <div>
-
-    <div @click="change" class="parent">
-      我是父亲首页1020+0912
-    </div>
+<color></color>
+<!--    <div @click="change" class="parent">-->
+<!--      我是父亲首页1020+0912-->
+<!--    </div>-->
     <!-- 访问路由组件页面：login和register -->
     <!--    <router-link to="/micro1/child1">登录</router-link>-->
     <!-- 展示匹配到的组件：login和register -->
-    
-    <div class="center">
-      <micro-app
-          disablesandbox
-          :data='microAppData'
-          name='childName2'
-          url='http://localhost:7100/'
-          @mounted='handleMount'
-          @datachange='handleDataChange'>
-      </micro-app>
-    </div>
+
+<!--    <div class="center">-->
+<!--      <micro-app-->
+<!--          disable-memory-router-->
+<!--          disablesandbox-->
+<!--          :data='microAppData'-->
+<!--          name='childName2'-->
+<!--          url='http://localhost:7100/childName2'-->
+<!--          @mounted='handleMount'-->
+<!--          @datachange='handleDataChange'>-->
+<!--      </micro-app>-->
+<!--    </div>-->
 
 
-    <div class="bottom">
-      <micro-app    name='childName3'  url='http://localhost:7200' ></micro-app>
-    </div>
+<!--<div>123456789</div>-->
+<!--    <div class="center">-->
+<!--      <micro-app-->
+<!--          disable-memory-router-->
+<!--          disablesandbox-->
+<!--          :data='microAppData'-->
+<!--          name='childName4'-->
+<!--          url='http://localhost:7101/childName2'-->
+<!--          @mounted='handleMount'-->
+<!--          @datachange='handleDataChange'>-->
+<!--      </micro-app>-->
+<!--    </div>-->
+
+
+
+<!--    <div class="bottom">-->
+<!--      <micro-app    name='childName3'  url='http://localhost:7200' ></micro-app>-->
+<!--    </div>-->
 
 <!--    <div class="center">-->
 <!--      <micro-app-->
@@ -53,10 +69,21 @@
 
 <script setup>
 
-import {ref, reactive, onMounted, getCurrentInstance} from 'vue'
+import {ref, reactive, onMounted, getCurrentInstance,defineAsyncComponent  } from 'vue'
 import {useRouter} from 'vue-router'
 import axios from 'axios'
 import appConfig from '../../app.config'
+
+import XXapi from 'childName2/appApi'
+
+const color = defineAsyncComponent(() => import("childName2/color"));
+
+
+console.log('XXapi',XXapi);
+
+console.log('color',color);
+
+
 
 let router = useRouter();
 

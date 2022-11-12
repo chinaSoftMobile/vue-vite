@@ -11,7 +11,7 @@ export default {
         // 系统管理
         'childName2': {
             dev: {
-                url: 'http://localhost:7100/'
+                url: 'http://localhost:7101/'
             },
             preview: {
                 url: `http://localhost:${8821}/childName2/`
@@ -30,6 +30,17 @@ export default {
             build: {
                 url: '/childName3/'
             }
-        }
+        },
+        'childName4': {
+            dev: {
+                url: 'http://localhost:7100/'
+            },
+            preview: {
+                url: `http://localhost:${8821}/childName4/`
+            },
+            build: {
+                url: '/childName4/'
+            }
+        },
     }
 };

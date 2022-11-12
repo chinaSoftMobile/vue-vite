@@ -1,10 +1,6 @@
 <template>
   <div class="child2">
-   子页面
-  </div>
-
-  <div>
-
+    子页面
   </div>
 
 </template>
@@ -13,6 +9,8 @@
 import {ref, reactive} from 'vue'
 </script>
 
-<style scoped >
-
+<style scoped>
+.child2 {
+  color: red;
+}
 </style>
